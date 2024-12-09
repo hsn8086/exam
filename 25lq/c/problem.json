@@ -1,0 +1,81 @@
+{
+    "template": [
+        "f'{n} {q}'",
+        "' '.join(str(random.randint(0,max_volume)) for _ in range(q))",
+        "'\\n'.join(f'{random.randint(1,max_volume//2)} {random.randint(1,max_volume//2)}' for _ in range(n))"
+    ],
+    "pre": [
+        "import random"
+    ],
+    "solution": [
+        "pypy3",
+        "solution.py"
+    ],
+    "time_limit": 2000,
+    "memory_limit": 256000,
+    "examples": [
+        {
+            "n": 3,
+            "q": 3,
+            "max_volume": 10
+        },
+        {
+            "n": 3,
+            "q": 3,
+            "max_volume": 10
+        }
+    ],
+    "tests": [
+        {
+            "n": 3,
+            "q": 1,
+            "max_volume": 10
+        },
+        {
+            "n": 3,
+            "q": 3,
+            "max_volume": 10
+        },
+        {
+            "n": 10,
+            "q": 5,
+            "max_volume": 100
+        },
+        {
+            "n": 100,
+            "q": 100,
+            "max_volume": 1000
+        },
+        {
+            "n": 1000,
+            "q": 100,
+            "max_volume": 1000
+        },
+        {
+            "n": 1000,
+            "q": 100,
+            "max_volume": 10000
+        },
+        {
+            "n": 1000,
+            "q": 1000,
+            "max_volume": 10000
+        },
+        {
+            "n": 1000,
+            "q": 1000,
+            "max_volume": 100000
+        },
+        {
+            "n": 1000,
+            "q": 10000,
+            "max_volume": 100000
+        },
+        {
+            "n": 1000,
+            "q": 10000,
+            "max_volume": 100000
+        }
+
+    ]
+}
