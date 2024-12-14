@@ -50,7 +50,7 @@ double sqrt_newton(double n) {
 }
 ```
 ## Normal
-f(x) fd(x)
+$f(x)$ $f'(x)$
 ``` python
 def newton_method(f, fd, x0, eps=1e-10, max_iter=100):
     x = x0
