@@ -1,0 +1,22 @@
+{
+    "template": [
+        "''"
+    ],
+    "pre": [
+    ],
+    "solution": [
+        "pypy3",
+        "solution.py"
+    ],
+    "time_limit": 2000,
+    "memory_limit": 256000,
+    "examples": [
+
+    ],
+    "tests": [
+        {
+
+        }
+
+    ]
+}
