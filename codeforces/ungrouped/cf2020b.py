@@ -44,22 +44,21 @@
 #         yield n
 
 import math
-import bisect
-
-
-class SQ:
-    def __getitem__(self, x):
-        return x**2
-
-
-
-def sqrt(x):
-    return bisect.bisect_left(SQ(), x, 0, x / 2)
+def isqrt_newton(n):
+    x = 1
+    decreased = False
+    while True:
+        nx = (x + n // x) // 2
+        if x == nx or (nx > x and decreased):
+            break
+        decreased = nx < x
+        x = nx
+    return x
 
 
 def solve(kl: list):
     for k in kl:
-        yield k + math.ceil((sqrt(1 + 4 * k) - 1) / 2)
+        yield k + math.ceil((isqrt_newton(1 + 4 * k) - 1) / 2)
 
 
 num_of_tc = int(input())

@@ -2,7 +2,7 @@
 ## 2-Dim prefix sum
 ### Build 2D prefix sum matrix
 Given a 2-D matrix, we can calculate the prefix sum of the matrix. The prefix sum of matrix[i][j] is the sum of all elements in the rectangle whose top-left corner is (0, 0) and bottom-right corner is (i, j).
-```python
+``` python
 def build_prefix_sum(n: int, m: int) -> list:
     """Build 2D prefix sum matrix"""
     prefix_sum = []
@@ -16,6 +16,22 @@ def build_prefix_sum(n: int, m: int) -> list:
         prefix_sum.append(curr_row)
     return prefix_sum
 ```
+```cpp
+#include <vector>
+
+std::vector<std::vector<int>> build_prefix_sum(int n, int m, const std::vector<std::vector<int>>& matrix) {
+    std::vector<std::vector<int>> prefix_sum(n, std::vector<int>(m, 0));
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int left = (j > 0) ? prefix_sum[i][j-1] : 0;
+            int up = (i > 0) ? prefix_sum[i-1][j] : 0;
+            int diagonal = (i > 0 && j > 0) ? prefix_sum[i-1][j-1] : 0;
+            prefix_sum[i][j] = matrix[i][j] + left + up - diagonal;
+        }
+    }
+    return prefix_sum;
+}
+```
 The time complexity of building the prefix sum matrix is O(nm), where n is the number of rows and m is the number of columns.
 
 ### Calculate the sum of a rectangle
@@ -27,4 +43,12 @@ def get_submatrix_sum(prefix_sum: list, x1: int, x2: int, y1: int, y2: int) -> i
     right = prefix_sum[x2-1][y1-2] if x2 > 0 and y1 > 1 else 0  
     overlap = prefix_sum[x1-2][y1-2] if x1 > 1 and y1 > 1 else 0
     return prefix_sum[x2-1][y2-1] - bottom - right + overlap
+```
+```cpp
+int get_submatrix_sum(const std::vector<std::vector<int>>& prefix_sum, int x1, int x2, int y1, int y2) {
+    int bottom = (x1 > 1 && y2 > 0) ? prefix_sum[x1-2][y2-1] : 0;
+    int right = (x2 > 0 && y1 > 1) ? prefix_sum[x2-1][y1-2] : 0;
+    int overlap = (x1 > 1 && y1 > 1) ? prefix_sum[x1-2][y1-2] : 0;
+    return prefix_sum[x2-1][y2-1] - bottom - right + overlap;
+}
 ```
