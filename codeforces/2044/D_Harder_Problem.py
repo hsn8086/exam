@@ -1,29 +1,27 @@
-# ntc = int(input())
-# for _ in range(ntc):
-#     n = int(input())
-#     a = list(map(int, input().split()))
-#     a_s = set(a)
-#     u_s = set(filter(lambda i: i not in a_s, range(1, n + 1)))
-#     rss = set()
-#     rsl = []
-#     for i in a:
-#         if i in rss:
-#             num = u_s.pop()
-#             rsl.append(num)
-#         else:
-#             rss.add(i)
-#             rsl.append(i)
-#     print(*rsl)
+from itertools import chain, pairwise
 
-ntc = int(input())
-for _ in range(ntc):
+
+def dedup_sort(a):
+    lst = sorted(enumerate(a), key=lambda x: x[1])  # 按值排序
+
+    sorted_lst = [lst[0]]
+    for e in lst[1:]:  # 去重
+        if sorted_lst[-1][1] != e[1]:
+            sorted_lst.append(e)
+
+    ordered_lst = sorted(sorted_lst, key=lambda x: x[0])  # 按插入顺序排序
+    return map(lambda x: x[1], sorted_lst), map(lambda x: x[1], ordered_lst)  # 输出
+
+
+for _ in range(int(input())):  # 处理多tc
     n = int(input())
-    a = map(int, input().split())
+    sorted_a, ordered_a = dedup_sort(map(int, input().split()))
 
-    d = {}
-
-    for i in a:
-        if i not in d:
-            d[i] = None
-    u_s = list(filter(lambda i: i not in d, range(1, n + 1)))
-    print(*(list(d) + u_s))
+    print(
+        *ordered_a,  # 输出ordered数组
+        *chain.from_iterable(  # 输出间隙
+            map(
+                lambda t: range(t[0] + 1, t[1]), pairwise(chain([0], sorted_a, [n + 1]))
+            )
+        ),
+    )

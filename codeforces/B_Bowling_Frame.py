@@ -17,6 +17,6 @@ for _ in range(ntc):
     rst = newton_method(
         lambda x: x**2 + x - 2 * (w + b),
         lambda x: 2 * x + 1,
-        100,
+        100000,
     )
     print(math.floor(rst))
