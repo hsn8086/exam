@@ -6,3 +6,4 @@ def binary_search(query: callable, left: int, right: int):
         else:
             right = mid - 1
     return left
+
