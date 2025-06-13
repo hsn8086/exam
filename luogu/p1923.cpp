@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int* a, int* b) {
+void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
@@ -40,13 +40,13 @@ void heapify_down(int heap[], int size, int index) {
     }
 }
 
-void push(int heap[], int* size, int value) {
+void push(int heap[], int *size, int value) {
     heap[*size] = value;
     (*size)++;
     heapify_up(heap, *size - 1);
 }
 
-void pop(int heap[], int* size) {
+void pop(int heap[], int *size) {
     heap[0] = heap[*size - 1];
     (*size)--;
     heapify_down(heap, *size, 0);
@@ -68,7 +68,7 @@ int solve(int n, int k, int an[]) {
             pop(heap, &heap_size);
         }
     }
-    
+
     return -top(heap); // 返回堆顶元素，变为正值
 }
 
@@ -76,7 +76,7 @@ int main() {
     int n, k;
     scanf("%d %d", &n, &k);
     int an[n];
-    
+
     for (int i = 0; i < n; i++) {
         scanf("%d", &an[i]);
     }

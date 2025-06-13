@@ -1,4 +1,3 @@
-import heapq
 import sys
 import os
 from io import BytesIO, IOBase
@@ -57,27 +56,42 @@ sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
 input = sys.stdin.readline
 
 
-def dijk(adj, s):
-    dis = [10**9 + 7 for _ in range(len(adj))]
-    dis[s] = 0
-    queue = [(0, s)]
-    visted = set()
-    while queue:
-        _, u = heapq.heappop(queue)
-        if u in visted:
-            continue
+class FenwickTree:
+    def __init__(self, size):
+        self.size = size
+        self.tree = [0] * (self.size + 1)
 
-        for v, w in adj[u]:
-            if dis[v] > dis[u] + w:
-                dis[v] = dis[u] + w
-                heapq.heappush(queue, (dis[v], v))
-    return dis
+    def update(self, index, delta):
+        while index <= self.size:
+            self.tree[index] += delta
+            index += index & -index
+
+    def query_prefix(self, index):
+        res = 0
+        while index > 0:
+            res += self.tree[index]
+            index -= index & -index
+        return res
+
+    def query(self, index):
+        return self.query_range(index, index)
+
+    def query_range(self, left, right):
+        return self.query_prefix(right) - self.query_prefix(left - 1)
 
 
-n, m, s = map(int, input().split())
-adj = [[] for _ in range(n + 1)]
-for _ in range(m):
-    u, v, w = map(int, input().split())
-    adj[u].append((v, w))
-dis = dijk(adj, s)
-sys.stdout.write(" ".join(map(_str, dis[1:])))
+n = int(input())
+a = map(int, input().split())
+ft = FenwickTree(n + 1)
+
+lst = []
+for i, v in enumerate(a, 1):
+    lst.append((v, i))
+
+lst.sort(reverse=True)
+ans = 0
+for i in lst:
+    ft.update(i[1], 1)
+    print(ft.query(i[1] - 1), i)
+    ans += ft.query_prefix(i[1] - 1)
+print(ans)
