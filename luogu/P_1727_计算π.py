@@ -6,6 +6,7 @@ sys.set_int_max_str_digits(0)
 
 
 def chudnovsky_pi(precision):
+
     decimal.getcontext().prec = precision + 2  # Extra precision for intermediate steps
     C = 426880 * decimal.Decimal(10005).sqrt()
     M = 1
