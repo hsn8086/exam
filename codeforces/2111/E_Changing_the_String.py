@@ -3,8 +3,6 @@ import sys
 import os
 from io import BytesIO, IOBase
 
-_str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
 BUFSIZE = 8192
 
 
@@ -53,7 +51,7 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-input = lambda: sys.stdin.readline().strip()
+input = lambda: sys.stdin.readline().rstrip()
 
 
 for _ in range(int(input())):
