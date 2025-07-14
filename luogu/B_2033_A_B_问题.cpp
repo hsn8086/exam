@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <iostream>
 #define endl '\n'
 using i64 = long long;
 using u64 = unsigned long long;
@@ -7,9 +6,9 @@ using i128 = __int128_t;
 using f128 = long double;
 
 void solve() {
-    char c;
-    std::cin >> c;
-    std::cout << (int)c;
+    i64 a, b;
+    std::cin >> a >> b;
+    std::cout << a * b;
 }
 signed main() {
     std::ios::sync_with_stdio(false);

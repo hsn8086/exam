@@ -7,9 +7,7 @@ using i128 = __int128_t;
 using f128 = long double;
 
 void solve() {
-    char c;
-    std::cin >> c;
-    std::cout << (int)c;
+    std::cout << "Ciallo World!" << endl;
 }
 signed main() {
     std::ios::sync_with_stdio(false);

@@ -1,23 +1,30 @@
 import sys
-from itertools import islice
-
-def fast_read(func=int):
-    CHUNK_SIZE = 16384
-    cache = bytes()
-    while d := sys.stdin.buffer.read(CHUNK_SIZE):
-        ds = (cache + d).split()
-        del cache
-        if d[-1] != 32 and d[-1] != 10:
-            cache = ds.pop(-1)
-        else:
-            cache = bytes()
-        yield from map(lambda x: func(x.decode()), ds)
-        del ds
-    yield func(cache.decode())
 
 
-inp = fast_read()
-n, p = islice(inp, 2)
+def num_reader():
+    cache = 0
+    flag = False
+    neg = False
+    while chunk := sys.stdin.buffer.read(1<<16):
+        for byte in chunk:
+            if 48 <= byte <= 57:
+                cache = (cache << 3) + (cache << 1) + byte - 48
+                flag = True
+                continue
+
+            if flag:
+                yield -cache if neg else cache
+                cache = 0
+                flag = False
+                neg = False
+
+            if byte == 45:
+                neg = True
+
+
+inp = num_reader()
+
+n, p = next(inp), next(inp)
 
 a = [next(inp) for _ in range(n)]
 dif = [0 for _ in range(n + 1)]
