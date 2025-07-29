@@ -1,0 +1,43 @@
+{
+    "template": [
+        "f'{int(t)}'",
+        "'\\n'.join(' '.join(data_gen(int(m))) for _ in range(int(t)))"
+    ],
+    "pre": [
+        "import random",
+        "def data_gen(max_=10**4):\n    x = random.randint(2, max_)\n    return map(str,(x**2 + 1, x**2 - 1, 2 * x))"
+    ],
+    "solution": [
+        "pypy3",
+        "main.py"
+    ],
+    "time_limit": 1000,
+    "memory_limit": 256000,
+    "examples": [],
+    "tests": [
+        {
+            "t": 3,
+            "m": 5
+        },
+        {
+            "t": 10,
+            "m": 10
+        },
+        {
+            "t": 100,
+            "m": 100
+        },
+        {
+            "t": 1000,
+            "m": 500
+        },
+        {
+            "t": 1e4,
+            "m": 1e3
+        },
+        {
+            "t": 1e5,
+            "m": 1e4
+        }
+    ]
+}

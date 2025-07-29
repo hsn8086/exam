@@ -1,0 +1,55 @@
+{
+    "template": [
+        "int(t)",
+        "'\\n'.join(data_gen(int(max_n), int(max_k),k) for _ in range(int(t)))"
+    ],
+    "pre": [
+        "import random",
+        "def data_gen(max_n, max_a,k_=False):\n    if k_:\n        n = max_n\n        a = list(range(n))\n        k = a[-1]\n        return f'{n} {k}\\n' + ' '.join(map(str, a))\n    else:\n        n = random.randint(1, max_n)\n        a = [random.randint(1, max_a) for _ in range(n)]\n        k = random.randint(1, sum(a))\n        return f'{n} {k}\\n' + ' '.join(map(str, a))"
+    ],
+    "solution": [
+        "g++",
+        "main.cpp","-o","main","&&","./main"
+    ],
+    "time_limit": 5000,
+    "memory_limit": 256000,
+    "examples": [],
+    "tests": [
+        {
+            "t": 1e1,
+            "max_n": 10,
+            "max_k": 10,
+            "k": false
+        },{
+            "t": 1e2,
+            "max_n": 1e3,
+            "max_k": 1e3,
+            "k": false
+        },{
+            "t": 1e2,
+            "max_n": 1e3,
+            "max_k": 1e9,
+            "k": false
+        },{
+            "t": 1e2,
+            "max_n": 1e4,
+            "max_k": 1e4,
+            "k": false
+        },{
+            "t": 1e2,
+            "max_n": 1e4,
+            "max_k": 1e9,
+            "k": false
+        },{
+            "t": 1,
+            "max_n": 1e6,
+            "max_k": 1e9,
+            "k": false
+        },{
+            "t": 1,
+            "max_n": 1e7,
+            "max_k": 1e9,
+            "k": true
+        }
+    ]
+}

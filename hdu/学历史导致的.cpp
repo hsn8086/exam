@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main() {
+    map<string, string> mapping = {
+        {"jiazi", "1984"},
+        {"yichou", "1985"},
+        {"bingyin", "1986"},
+        {"dingmao", "1987"},
+        {"wuchen", "1988"},
+        {"jisi", "1989"},
+        {"gengwu", "1990"},
+        {"xinwei", "1991"},
+        {"renshen", "1992"},
+        {"guiyou", "1993"},
+        {"jiaxu", "1994"},
+        {"yihai", "1995"},
+        {"bingzi", "1996"},
+        {"dingchou", "1997"},
+        {"wuyin", "1998"},
+        {"jimao", "1999"},
+        {"gengchen", "2000"},
+        {"xinsi", "2001"},
+        {"renwu", "2002"},
+        {"guiwei", "2003"},
+        {"jiashen", "2004"},
+        {"yiyou", "2005"},
+        {"bingxu", "2006"},
+        {"dinghai", "2007"},
+        {"wuzi", "2008"},
+        {"jichou", "2009"},
+        {"gengyin", "2010"},
+        {"xinmao", "2011"},
+        {"renchen", "2012"},
+        {"guisi", "2013"},
+        {"jiawu", "2014"},
+        {"yiwei", "2015"},
+        {"bingshen", "2016"},
+        {"dingyou", "2017"},
+        {"wuxu", "2018"},
+        {"jihai", "2019"},
+        {"gengzi", "2020"},
+        {"xinchou", "2021"},
+        {"renyin", "2022"},
+        {"guimao", "2023"},
+        {"jiachen", "2024"},
+        {"yisi", "2025"},
+        {"bingwu", "2026"},
+        {"dingwei", "2027"},
+        {"wushen", "2028"},
+        {"jiyou", "2029"},
+        {"gengxu", "2030"},
+        {"xinhai", "2031"},
+        {"renzi", "2032"},
+        {"guichou", "2033"},
+        {"jiayin", "2034"},
+        {"yimao", "2035"},
+        {"bingchen", "2036"},
+        {"dingsi", "2037"},
+        {"wuwu", "2038"},
+        {"jiwei", "2039"},
+        {"gengshen", "2040"},
+        {"xinyou", "2041"},
+        {"renxu", "2042"},
+        {"guihai", "2043"}
+    };
+
+    int t;
+    cin >> t;
+    cin.ignore(); // Consume the newline character after reading t
+
+    for (int i = 0; i < t; ++i) {
+        string inp;
+        getline(cin, inp); // Use getline to read the entire line
+
+        cout << mapping[inp] << endl;
+    }
+
+    return 0;
+}

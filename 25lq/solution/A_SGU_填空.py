@@ -1,1 +1,1 @@
-print("Shaoguan University")
+print('Shaoguan University')

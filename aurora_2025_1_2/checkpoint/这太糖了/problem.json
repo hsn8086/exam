@@ -1,0 +1,46 @@
+{
+    "template": [
+        "f'{int(n)} {int(m)}'",
+        "'\\n'.join(' '.join(map(str,sorted([random.randint(1,int(n)),random.randint(1,int(n))]))) for _ in range(int(m)))"
+    ],
+    "pre": [
+        "import random"
+    ],
+    "solution": [
+        "pypy3",
+        "main.py"
+    ],
+    "time_limit": 5000,
+    "memory_limit": 256000,
+    "examples": [],
+    "tests": [
+        {
+            "n": 1e1,
+            "m": 3
+        },
+        {
+            "n": 1e2,
+            "m": 1e2
+        },
+        {
+            "n": 1e3,
+            "m": 1e3
+        },
+        {
+            "n": 1e4,
+            "m": 1e4
+        },
+        {
+            "n": 1e5,
+            "m": 1e5
+        },
+        {
+            "n": 1e6,
+            "m": 1e5
+        },
+        {
+            "n": 1e7,
+            "m": 1e5
+        }
+    ]
+}

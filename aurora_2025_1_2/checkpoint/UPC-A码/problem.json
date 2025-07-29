@@ -1,0 +1,37 @@
+{
+    "template": [
+        "f'{int(t)}'",
+        "'\\n'.join(data_gen() for _ in range(int(t)))"
+    ],
+    "pre": [
+        "import random",
+        "def solution(inp):\n    ucpa = inp.replace('-', '')\n    a = ucpa[::2]\n    b = ucpa[1::2]\n    sa, sb = sum(map(int, a)), sum(map(int, b))\n    rst = str(10 - (sa * 3 + sb) % 10)\n    if rst=='10':\n        rst='0'\n    return rst\ndef data_gen():\n    sys_code = random.randint(0, 9)\n    code1 = random.randint(10000, 99999)\n    code2 = random.randint(10000, 99999)\n    if random.randint(0, 1):\n        v = solution(inp=f'{sys_code}-{code1}-{code2}')\n    else:\n        v = random.randint(0, 9)\n    return (f'{sys_code}-{code1}-{code2}-{v}')"
+    ],
+    "solution": [
+        "pypy3",
+        "main.py"
+    ],
+    "time_limit": 1000,
+    "memory_limit": 256000,
+    "examples": [],
+    "tests": [
+        {
+            "t": 3
+        },
+        {
+            "t": 10
+        },
+        {
+            "t": 100
+        },
+        {
+            "t": 1000
+        },
+        {
+            "t": 10000
+        },
+        {
+            "t": 100000
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "template": [
+        "data_gen(m)"
+    ],
+    "pre": [
+        "import random",
+        "def data_gen(length=1):\n    while True:\n        rst=''\n        for _ in range(length):\n            if rst:\n                rst+=random.choice('+*')\n            rst+=str(random.randint(0,1000))\n        if eval(rst)<=10**18 and len(rst)<=100:\n            return rst"
+    ],
+    "solution": [
+        "pypy3",
+        "main.py"
+    ],
+    "time_limit": 1000,
+    "memory_limit": 256000,
+    "examples": [],
+    "tests": [
+        {
+            "m": 1
+        },{
+            "m": 1
+        },{
+            "m": 1
+        },{
+            "m": 1
+        },{
+            "m": 1
+        },{
+            "m": 2
+        },{
+            "m": 2
+        },{
+            "m": 2
+        },{
+            "m": 2
+        },{
+            "m": 2
+        },{
+            "m": 3
+        },{
+            "m": 3
+        },{
+            "m":3
+        },{
+            "m": 3
+        },{
+            "m": 3
+        },{
+            "m": 5
+        },{
+            "m": 5
+        },{
+            "m": 5
+        },{
+            "m": 5
+        },{
+            "m": 5
+        },{
+            "m": 10
+        },{
+            "m": 10
+        },{
+            "m": 10
+        },{
+            "m": 10
+        },{
+            "m": 10
+        },{
+            "m": 15
+        },{
+            "m": 15
+        },{
+            "m": 15
+        },{
+            "m": 15
+        },{
+            "m": 15
+        },{
+            "m": 20
+        },{
+            "m": 20
+        },{
+            "m": 20
+        },{
+            "m": 20
+        },{
+            "m": 20
+        },{
+            "m": 25
+        },{
+            "m": 25
+        },{
+            "m": 25
+        },{
+            "m": 25
+        },{
+            "m": 25
+        }
+
+    ]
+}
