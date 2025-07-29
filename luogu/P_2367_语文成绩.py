@@ -1,30 +1,29 @@
-from collections.abc import Generator
 import sys
 
 
-def chunk_reader(func=int, chunk_size=1 << 15) -> Generator[int, None, None]:
-    inp_cache = ""
-    while True:
-        chunk = sys.stdin.read(chunk_size)
-        if not chunk:
-            if inp_cache:
-                yield func(inp_cache)
-                del inp_cache
-            break
+def num_reader():
+    cache = 0
+    flag = False
+    neg = False
+    while chunk := sys.stdin.buffer.read(1<<16):
+        for byte in chunk:
+            if 48 <= byte <= 57:
+                cache = (cache << 3) + (cache << 1) + byte - 48
+                flag = True
+                continue
 
-        for c in chunk:
-            if c.isspace():
-                if inp_cache:
-                    yield func(inp_cache)
-                    del inp_cache
-                    inp_cache = ""
-            else:
-                inp_cache += c
-            del c
-        del chunk
+            if flag:
+                yield -cache if neg else cache
+                cache = 0
+                flag = False
+                neg = False
+
+            if byte == 45:
+                neg = True
 
 
-inp = chunk_reader()
+inp = num_reader()
+
 n, p = next(inp), next(inp)
 
 a = [next(inp) for _ in range(n)]
@@ -36,6 +35,6 @@ for _ in range(p):
 
 for i in range(1, n):
     dif[i] += dif[i - 1]
-    
+
 m = min(ai + di for ai, di in zip(a, dif))
 print(m)
