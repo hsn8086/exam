@@ -1,24 +1,21 @@
-# LLVM  Google
-BasedOnStyle: llvm
-
-# 强制花括号遵循 Allman 风格
-# BreakBeforeBraces: Allman
-
 Language: Cpp
+
+# LLVM  Google
+BasedOnStyle: LLVM
 
 # 对齐连续的宏定义
 AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 
 #  对齐尾部注释
 AlignTrailingComments: Leave
- 
-# 访问修饰符偏移 
+
+# 访问修饰符偏移
 AccessModifierOffset: -4 # -4就是public顶格
 
 # 允许短函数在单行上
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: true
 
- # 允许短语法块在单行上
+# 允许短语法块在单行上
 AllowShortBlocksOnASingleLine: Empty
 
 # 总是把短语句放在单行上
@@ -31,20 +28,20 @@ AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
 
 # 控制行宽，避免行太长
-ColumnLimit: 80
+ColumnLimit: 100
 
 # 对头文件排序
 SortIncludes: true
- 
+
 # 控制空格和标点符号风格
-SpaceBeforeParens: ControlStatements  # 控制语句的括号前有空格
-SpaceBeforeAssignmentOperators: true  # 赋值操作符前插入空格
- 
+SpaceBeforeParens: ControlStatements # 控制语句的括号前有空格
+SpaceBeforeAssignmentOperators: true # 赋值操作符前插入空格
+
 # 缩进设置
-IndentWidth: 4  # 使用4个空格缩进
- 
+IndentWidth: 4 # 使用4个空格缩进
+
 # 控制每行最大空行数（避免空行过多）
 MaxEmptyLinesToKeep: 1
- 
+
 # 注释前保留一个空格
-SpacesBeforeTrailingComments: 1  
+SpacesBeforeTrailingComments: 1

@@ -38,6 +38,7 @@ for _ in range(m):
     u, v, w = map(int, input().split())
     e.append((u, v, w))
 e.sort(key=lambda x: x[2])
+
 dj = Disjoin()
 ans = 0
 cnt = 0

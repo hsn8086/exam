@@ -6,7 +6,7 @@ using namespace std;
 bool is_divisor(long long a, long long b) {
     return b != 0 && a % b == 0;
 }
-
+aaaaaa
 int main() {
     int n;
     cin >> n;
